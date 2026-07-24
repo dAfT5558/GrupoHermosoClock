@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horas del Grupo Hermoso</title>
+
+<style>
+    :root {
+        --bg: #070710;
+        --text: #ffffff;
+        --radius: 18px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 60px;
+
+    background:
+        radial-gradient(circle at center, #0b0f2a 0%, #070710 55%),
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.03),
+            rgba(0,0,0,0.2)
+        ),
+
+        repeating-linear-gradient(
+            45deg,
+            rgba(255,255,255,0.02),
+            rgba(255,255,255,0.02) 1px,
+            rgba(0,0,0,0.02) 2px
+        );
+
+    background-blend-mode: overlay, multiply, normal;
+} 
+
+    header {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        letter-spacing: 2px;
+        text-shadow:
+            0 0 10px rgba(255,255,255,0.3),
+            0 0 30px rgba(120,120,255,0.2);
+    }
+
+    .grid {
+        width: 100%;
+        max-width: 1100px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 26px;
+    }
+
+    .card {
+        position: relative;
+        background: rgba(10, 12, 30, 0.85);
+        border-radius: var(--radius);
+        padding: 22px 20px 26px;
+        text-align: center;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        box-shadow:
+            0 0 25px color-mix(in srgb, var(--accent) 30%, transparent),
+            0 0 60px color-mix(in srgb, var(--accent) 15%, transparent);
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: inherit;
+        border: 2px solid var(--accent);
+        filter: blur(1px);
+        opacity: 0.85;
+        pointer-events: none;
+        box-shadow:
+            0 0 12px var(--accent),
+            0 0 24px var(--accent);
+    }
+
+    .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background:
+            radial-gradient(circle at top, 
+                color-mix(in srgb, var(--accent) 18%, transparent),
+                transparent 60%);
+        pointer-events: none;
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow:
+            0 0 35px color-mix(in srgb, var(--accent) 45%, transparent),
+            0 0 90px color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+
+    .name {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--accent);
+        text-shadow:
+            0 0 8px var(--accent),
+            0 0 16px color-mix(in srgb, var(--accent) 60%, white);
+    }
+
+    .clock {
+        font-size: 1.9rem;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-shadow:
+            0 0 6px rgba(255,255,255,0.6),
+            0 0 18px var(--accent);
+    }
+
+    #image-container {
+        display: flex;
+        gap: 0px;
+    }
+
+    #image-container img {
+        width: 40%;
+        height: auto;
+    }
+
+    #portrait img {
+        width: 120px;
+        height: 120px;
+    }
+
+    #flag img {
+        width: 80px;
+        height: 120px;
+        padding-top: 50%;
+    }
+
+    @media (max-width: 500px) {
+        .clock {
+            font-size: 1.6rem;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>We qué hora es cfff</h1>
+</header>
+
+<div class="grid">
+
+    <div class="card" style="--accent:#ff3b3b">
+        <p class="name">Diego</p>
+        <div id="bogota-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/diego.png" alt="diego xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/colombia.png" alt="colombia xd">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="--accent:#ffe600">
+        <p class="name">Rolando</p>
+        <div id="santiago-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/rolan.png" alt="rolan xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/chile.png" alt="chile xd">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="--accent:#fc861e">
+        <p class="name">Yamal</p>
+        <div id="eastern-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/yamal.png" alt="yamal xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/usa.png" alt="usa xd">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="--accent:#b76bff">
+        <p class="name">Ale</p>
+        <div id="eastern2-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/ale.png" alt="ale xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/usa.png" alt="usa xd">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="--accent:#3b6cff">
+        <p class="name">David</p>
+        <div id="santiago2-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/david.png" alt="david xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/chile.png" alt="chile xd">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="--accent:#3bff6c">
+        <p class="name">Victor</p>
+        <div id="eastern3-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/victor.png" alt="victor xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/usa.png" alt="usa xd">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="--accent:#83f7fd">
+        <p class="name">Edu</p>
+        <div id="caracas-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/edu.png" alt="edu xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/venezuela.png" alt="venezuela xd">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="--accent:#7d4a1d">
+        <p class="name">Miguel</p>
+        <div id="eastern4-clock" class="clock"></div>
+        <div id="image-container">
+            <div id="portrait">
+                <img src="portraits/miguel.png" alt="miguel xd">
+            </div>
+            <div id="flag">
+                <img id="flag" src="flags/usa.png" alt="usa xd">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer style="opacity:0.4; margin-top:40px;">
+    0🕥 ni su pinxhe madre abrió el link
+</footer>
+
+<script>
+    function updateClock(clockId, timeZone) {
+        const now = new Date();
+        const options = {
+            timeZone,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        };
+        document.getElementById(clockId).textContent =
+            new Intl.DateTimeFormat('en-US', options).format(now);
+    }
+
+    function updateAllClocks() {
+        updateClock('bogota-clock', 'America/Bogota');
+        updateClock('santiago-clock', 'America/Santiago');
+        updateClock('eastern-clock', 'America/New_York');
+        updateClock('eastern2-clock', 'America/New_York');
+        updateClock('santiago2-clock', 'America/Santiago');
+        updateClock('eastern3-clock', 'America/New_York');
+        updateClock('caracas-clock', 'America/Caracas');
+        updateClock('eastern4-clock', 'America/New_York');
+    }
+
+    updateAllClocks();
+    setInterval(updateAllClocks, 1000);
+</script>
+
+</body>
+</html>
